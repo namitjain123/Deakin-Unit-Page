@@ -17,6 +17,8 @@ h3 {
 }
 p {
   font-size: 14px;
+
+
   font-family: Arial
 
   
@@ -25,6 +27,8 @@ p {
 div { 
   background-color: darkcyan; 
   text-align: right; 
+
+  
 } 
 th, td { 
   padding: 8px; 
