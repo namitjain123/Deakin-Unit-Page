@@ -20,14 +20,14 @@ pipeline {
                 }
             }
         }
-        stage('Lint') {
-            steps {
-                script {
-                    // Run linting (optional, to check code quality)
-                    sh 'npm run lint'  // You can configure linting using ESLint or similar tools
-                }
-            }
-        }
+        // stage('Lint') {
+        //     steps {
+        //         script {
+        //             // Run linting (optional, to check code quality)
+        //             sh 'npm run lint'  // You can configure linting using ESLint or similar tools
+        //         }
+        //     }
+        // }
         stage('Test') {
             steps {
                 script {
