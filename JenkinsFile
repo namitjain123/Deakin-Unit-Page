@@ -1,0 +1,73 @@
+pipeline {
+    agent any
+
+    stages {
+        
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Install dependencies using npm
+                    echo "Using npm to install project dependencies"
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                    // Build the project using npm
+                    echo "Using npm to build the project (build tool)"
+                    sh 'npm run build'  // Assuming you have a "build" script in package.json
+                }
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                script {
+                    // Run linting (optional, to check code quality)
+                    echo "Using ESLint to check the code for issues and maintain quality"
+                    sh 'npm run lint'  // Assuming you have ESLint configured
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                script {
+                    // Run unit tests (optional, depending on your project)
+                    echo "Using Jest for unit testing"
+                    sh 'npm test'  // Assuming you have Jest configured for testing
+                }
+            }
+        }
+
+        stage('Deploy to Staging') {
+            steps {
+                script {
+                    // Deploy the code to a staging environment (example)
+                    echo "Using npm to deploy to a staging environment"
+                    sh 'npm run deploy-staging'  // Assuming you have a deploy script in package.json
+                }
+            }
+        }
+
+        stage('Deploy to Production') {
+            steps {
+                script {
+                    // Deploy to the production environment
+                    echo "Using npm to deploy to production"
+                    sh 'npm run deploy-production'  // Assuming you have a deploy script in package.json
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Cleanup or notifications
+            echo 'Pipeline finished!'
+        }
+    }
+}
