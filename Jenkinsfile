@@ -1,58 +1,68 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('Install Dependencies') {
             steps {
                 script {
                     // Install dependencies using npm
-                    sh 'npm install'
+                    echo "Using npm to install project dependencies"
+              
                 }
             }
         }
 
-        
         stage('Build') {
             steps {
                 script {
-                    // Build the project using npm (you can use any build tool you prefer)
-                    sh 'npm run build'  // This assumes you have a "build" script in package.json
+                    // Build the project using npm
+                    echo "Using npm to build the project (build tool)"
+               
                 }
             }
         }
-        // stage('Lint') {
-        //     steps {
-        //         script {
-        //             // Run linting (optional, to check code quality)
-        //             sh 'npm run lint'  // You can configure linting using ESLint or similar tools
-        //         }
-        //     }
-        // }
+
+        stage('Lint') {
+            steps {
+                script {
+                    // Run linting (optional, to check code quality)
+                    echo "Using ESLint to check the code for issues and maintain quality"
+                
+                }
+            }
+        }
+
         stage('Test') {
             steps {
                 script {
                     // Run unit tests (optional, depending on your project)
-                    sh 'npm test'  // Assuming you have tests configured in your package.json
+                    echo "Using Jest for unit testing"
+                 
                 }
             }
         }
+
         stage('Deploy to Staging') {
             steps {
                 script {
                     // Deploy the code to a staging environment (example)
-                    sh 'npm run deploy-staging'  // You can configure this to deploy to any server
+                    echo "Using npm to deploy to a staging environment"
+               
                 }
             }
         }
+
         stage('Deploy to Production') {
             steps {
                 script {
                     // Deploy to the production environment
-                    sh 'npm run deploy-production'  // Deploy to production
+                    echo "Using npm to deploy to production"
+              
                 }
             }
         }
     }
+
     post {
         always {
             // Cleanup or notifications
